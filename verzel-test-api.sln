@@ -9,7 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - API", "1 - API", "{7328
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Config", "0 - Config", "{5C5C2290-CB31-4426-80A9-77BFFA0EAB5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "verzel-test-api.config", "verzel-test-api.config\verzel-test-api.config.csproj", "{1248DBEE-DF23-4D09-8CC4-1D75BA08064A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "verzel-test-api.config", "verzel-test-api.config\verzel-test-api.config.csproj", "{1248DBEE-DF23-4D09-8CC4-1D75BA08064A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infra", "2 - Infra", "{6A7C0173-25BC-4AA2-92B6-E2865D21889E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "verzel-test-api.infra", "verzel-test-api.infra\verzel-test-api.infra.csproj", "{6EBBE4AB-1FB0-4F47-9420-EC46AC2A68C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{0063C7C9-737A-4A3D-B741-79336292AC7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "verzel-test-api.domain", "verzel-test-api.domain\verzel-test-api.domain.csproj", "{8A523857-0A62-4412-91B6-D80483C560DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Business", "4 - Business", "{9D54C1B8-C070-4796-BFF5-74EC6A15C118}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "verzel-test-api.business", "verzel-test-api.business\verzel-test-api.business.csproj", "{B1AEF5E5-A968-4E65-B431-3A4F8191C4B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +37,18 @@ Global
 		{1248DBEE-DF23-4D09-8CC4-1D75BA08064A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1248DBEE-DF23-4D09-8CC4-1D75BA08064A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1248DBEE-DF23-4D09-8CC4-1D75BA08064A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBBE4AB-1FB0-4F47-9420-EC46AC2A68C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBBE4AB-1FB0-4F47-9420-EC46AC2A68C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBBE4AB-1FB0-4F47-9420-EC46AC2A68C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBBE4AB-1FB0-4F47-9420-EC46AC2A68C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A523857-0A62-4412-91B6-D80483C560DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A523857-0A62-4412-91B6-D80483C560DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A523857-0A62-4412-91B6-D80483C560DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A523857-0A62-4412-91B6-D80483C560DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AEF5E5-A968-4E65-B431-3A4F8191C4B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AEF5E5-A968-4E65-B431-3A4F8191C4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AEF5E5-A968-4E65-B431-3A4F8191C4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AEF5E5-A968-4E65-B431-3A4F8191C4B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +56,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A6AA57AA-8250-47A6-AD7A-F72ECA186A2B} = {73285021-84A7-4D14-8626-269273587D5E}
 		{1248DBEE-DF23-4D09-8CC4-1D75BA08064A} = {5C5C2290-CB31-4426-80A9-77BFFA0EAB5B}
+		{6EBBE4AB-1FB0-4F47-9420-EC46AC2A68C6} = {6A7C0173-25BC-4AA2-92B6-E2865D21889E}
+		{8A523857-0A62-4412-91B6-D80483C560DF} = {0063C7C9-737A-4A3D-B741-79336292AC7E}
+		{B1AEF5E5-A968-4E65-B431-3A4F8191C4B7} = {9D54C1B8-C070-4796-BFF5-74EC6A15C118}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB24A196-072B-4C26-A906-5F2C2763F13E}

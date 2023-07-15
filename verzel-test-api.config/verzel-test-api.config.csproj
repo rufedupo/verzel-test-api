@@ -8,8 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.20" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\verzel-test-api.business\verzel-test-api.business.csproj" />
+    <ProjectReference Include="..\verzel-test-api.domain\verzel-test-api.domain.csproj" />
+    <ProjectReference Include="..\verzel-test-api.infra\verzel-test-api.infra.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,18 +8,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="verzel-test-api.business\**" />
     <Compile Remove="verzel-test-api.config\**" />
+    <Compile Remove="verzel-test-api.domain\**" />
+    <Compile Remove="verzel-test-api.infra\**" />
+    <Content Remove="verzel-test-api.business\**" />
     <Content Remove="verzel-test-api.config\**" />
+    <Content Remove="verzel-test-api.domain\**" />
+    <Content Remove="verzel-test-api.infra\**" />
+    <EmbeddedResource Remove="verzel-test-api.business\**" />
     <EmbeddedResource Remove="verzel-test-api.config\**" />
+    <EmbeddedResource Remove="verzel-test-api.domain\**" />
+    <EmbeddedResource Remove="verzel-test-api.infra\**" />
+    <None Remove="verzel-test-api.business\**" />
     <None Remove="verzel-test-api.config\**" />
+    <None Remove="verzel-test-api.domain\**" />
+    <None Remove="verzel-test-api.infra\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="verzel-test-api.config\verzel-test-api.config.csproj" />
+    <ProjectReference Include="verzel-test-api.infra\verzel-test-api.infra.csproj" />
   </ItemGroup>
 
 </Project>

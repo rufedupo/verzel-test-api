@@ -1,7 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 using System.Text.Json.Serialization;
+using verzel_test_api.business.Services;
+using verzel_test_api.domain.Interfaces.Repositories;
+using verzel_test_api.domain.Interfaces.Services;
+using verzel_test_api.domain.Settings;
+using verzel_test_api.infra.Repositories;
 
 namespace verzel_test_api.config
 {
@@ -62,6 +70,35 @@ namespace verzel_test_api.config
                     Description = "API of Managing Admin and Cars.",
                 });
             });
+        }
+
+        public static void InjectionDependency(this IServiceCollection services)
+        {
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+        }
+
+        public static void AuthenticationConfig(this IServiceCollection services)
+        {
+            var key = Encoding.ASCII.GetBytes(SettingJwt.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
         }
     }
 }

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>verzel_test_api.business</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NovaPasta\**" />
+    <EmbeddedResource Remove="NovaPasta\**" />
+    <None Remove="NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\verzel-test-api.domain\verzel-test-api.domain.csproj" />
+  </ItemGroup>
+
+</Project>
