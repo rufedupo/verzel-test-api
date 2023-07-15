@@ -7,4 +7,19 @@
     <RootNamespace>verzel_test_api</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="verzel-test-api.config\**" />
+    <Content Remove="verzel-test-api.config\**" />
+    <EmbeddedResource Remove="verzel-test-api.config\**" />
+    <None Remove="verzel-test-api.config\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="verzel-test-api.config\verzel-test-api.config.csproj" />
+  </ItemGroup>
+
 </Project>
