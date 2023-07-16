@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.Net;
+using System.Text.RegularExpressions;
 using verzel_test_api.domain.Exceptions;
 using verzel_test_api.domain.Interfaces.Services;
 using verzel_test_api.domain.Responses;
@@ -48,10 +50,16 @@ namespace verzel_test_api.Controllers
         {
             try
             {
-                if (registerViewModel == null)
+                if (registerViewModel == null || registerViewModel.Name.IsNullOrEmpty() || registerViewModel.Email.IsNullOrEmpty() || registerViewModel.Password.IsNullOrEmpty())
                 {
-                    return BadRequest();
+                    return BadRequest("Dados em branco");
                 }
+
+                if (!Regex.IsMatch(registerViewModel.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    return BadRequest("Email inválido");
+                }
+
                 var res = await _authService.Register(registerViewModel);
                 return Ok(res);
             }

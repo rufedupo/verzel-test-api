@@ -60,5 +60,7 @@ namespace verzel_test_api.business.Services
                 CreatedAt = newUser.CreatedAt
             };
         }
+
+
     }
 }
