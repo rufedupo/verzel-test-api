@@ -8,10 +8,15 @@ namespace verzel_test_api.domain.Models
     {
         public string? Name { get; set; }
 
+        [Required]
         public string Email { get; set; }
 
+        [Required]
         public string Password { get; set; }
 
+        [Required]
         public string Role { get; set; }
+
+        public ICollection<Car> Cars { get; } = new List<Car>();
     }
 }

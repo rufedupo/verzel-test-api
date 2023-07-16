@@ -10,6 +10,7 @@ using verzel_test_api.domain.ViewModels;
 namespace verzel_test_api.Controllers
 {
     [ApiController]
+    [Route("user")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;

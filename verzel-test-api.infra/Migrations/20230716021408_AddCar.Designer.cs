@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using verzel_test_api.infra.Contexts;
 
@@ -11,9 +12,11 @@ using verzel_test_api.infra.Contexts;
 namespace verzel_test_api.infra.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230716021408_AddCar")]
+    partial class AddCar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,20 +57,16 @@ namespace verzel_test_api.infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Cars");
                 });
@@ -102,22 +101,6 @@ namespace verzel_test_api.infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("verzel_test_api.domain.Models.Car", b =>
-                {
-                    b.HasOne("verzel_test_api.domain.Models.User", "User")
-                        .WithMany("Cars")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("verzel_test_api.domain.Models.User", b =>
-                {
-                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

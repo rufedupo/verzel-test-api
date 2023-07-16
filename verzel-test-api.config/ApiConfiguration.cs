@@ -100,7 +100,9 @@ namespace verzel_test_api.config
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICarService, CarService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICarRepository, CarRepository>();
         }
 
         public static void AuthenticationConfig(this IServiceCollection services)
