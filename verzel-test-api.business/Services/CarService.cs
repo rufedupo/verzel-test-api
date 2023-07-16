@@ -19,6 +19,31 @@ namespace verzel_test_api.business.Services
             _userRepository = userRepository;
         }
 
+        public async Task<CarResponse> GetById(Guid id, Guid userId)
+        {
+            var car = await _carRepository.GetById(id);
+            if (car == null)
+                throw new HttpException("Veículo não encontrado", HttpStatusCode.NotFound);
+
+            if (car.UserId != userId)
+                throw new HttpException("Não está autorizado a excluir este veículo", HttpStatusCode.Unauthorized);
+
+            return new CarResponse
+            {
+                Id = car.Id,
+                Name = car.Name,
+                Brand = car.Brand,
+                Model = car.Model,
+                Color = car.Color,
+                Age = car.Age,
+                Km = car.Km,
+                Price = car.Price,
+                Photo = car.Photo,
+                UserId = userId,
+                CreatedAt = car.CreatedAt
+            };
+        }
+
         public async Task<CarListResponse> GetAllByUserId(int page, Guid userId)
         {
             var cars = await _carRepository.GetAll();
@@ -119,15 +144,32 @@ namespace verzel_test_api.business.Services
                 Km = car.Km,
                 Price = car.Price,
                 Photo = car.Photo,
+                UserId = car.UserId,
                 CreatedAt = car.CreatedAt
             };
+        }
+
+        public async Task<CarResponse> UpdateCar(EditCarViewModel editCarViewModel, Guid userId)
+        {
+            var car = await _carRepository.GetById(editCarViewModel.Id);
+            if (car == null)
+                throw new HttpException("Veículo não encontrado", HttpStatusCode.NotFound);
+
+            if (car.UserId != userId)
+                throw new HttpException("Não está autorizado a excluir este veículo", HttpStatusCode.Unauthorized);
+
+
         }
 
         public async Task<bool> DeleteCar(Guid id, Guid userId)
         {
             var car = await _carRepository.GetById(id);
+            if (car == null)
+                throw new HttpException("Veículo não encontrado", HttpStatusCode.NotFound);
+
             if (car.UserId != userId)
                 throw new HttpException("Não está autorizado a excluir este veículo", HttpStatusCode.Unauthorized);
+            
             await _carRepository.Delete(id);
             return true;
         }

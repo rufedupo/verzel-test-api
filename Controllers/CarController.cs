@@ -21,6 +21,25 @@ namespace verzel_test_api.Controllers
         }
 
         [HttpGet]
+        [Route("get-by-id")]
+        public async Task<ActionResult<CarResponse>> GetById(Guid id)
+        {
+            try
+            {
+                Guid userId = Guid.Parse(HttpContext.User.Identity.Name);
+                var car = await _carService.GetById(id, userId);
+                return Ok(car);
+            }
+            catch (HttpException ex)
+            {
+                if (ex.GetHttpStatusCode() == HttpStatusCode.NotFound)
+                    return NotFound(ex.Message);
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
         [Route("get-all")]
         public async Task<ActionResult<CarListResponse>> GetAllByUser(int page)
         {
@@ -70,6 +89,29 @@ namespace verzel_test_api.Controllers
                     return BadRequest();
                 }
                 var carResponse = await _carService.CreateCar(addCarViewModel, userId);
+                return Ok(carResponse);
+            }
+            catch (HttpException ex)
+            {
+                if (ex.GetHttpStatusCode() == HttpStatusCode.NotFound)
+                    return NotFound(ex.Message);
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("edit")]
+        public async Task<ActionResult<CarResponse>> Edit([FromBody] EditCarViewModel editCarViewModel)
+        {
+            try
+            {
+                Guid userId = Guid.Parse(HttpContext.User.Identity.Name);
+                if (editCarViewModel == null)
+                {
+                    return BadRequest();
+                }
+                var carResponse = await _carService.UpdateCar(editCarViewModel, userId);
                 return Ok(carResponse);
             }
             catch (HttpException ex)
