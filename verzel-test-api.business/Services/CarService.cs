@@ -158,7 +158,31 @@ namespace verzel_test_api.business.Services
             if (car.UserId != userId)
                 throw new HttpException("Não está autorizado a excluir este veículo", HttpStatusCode.Unauthorized);
 
+            car.Name = editCarViewModel.Name;
+            car.Brand = editCarViewModel.Brand;
+            car.Model = editCarViewModel.Model;
+            car.Color = editCarViewModel.Color;
+            car.Age = editCarViewModel.Age;
+            car.Km = editCarViewModel.Km;
+            car.Price = editCarViewModel.Price;
+            car.UpdatedAt = DateTime.UtcNow;
 
+            var carUpdated = await _carRepository.Update(car);
+            return new CarResponse
+            {
+                Id = carUpdated.Id,
+                Name = carUpdated.Name,
+                Brand = carUpdated.Brand,
+                Model = carUpdated.Model,
+                Color = carUpdated.Color,
+                Age = carUpdated.Age,
+                Km = carUpdated.Km,
+                Price = carUpdated.Price,
+                Photo = carUpdated.Photo,
+                UserId = carUpdated.UserId,
+                CreatedAt = carUpdated.CreatedAt,
+                UpdatedAt = carUpdated.UpdatedAt
+            };
         }
 
         public async Task<bool> DeleteCar(Guid id, Guid userId)
