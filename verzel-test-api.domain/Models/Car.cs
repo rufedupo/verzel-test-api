@@ -27,7 +27,7 @@ namespace verzel_test_api.domain.Models
         [Required]
         public decimal Price { get; set; }
 
-        public byte[]? Photo { get; set; }
+        public string? Photo { get; set; }
 
         [Required]
         public Guid UserId { get; set; }

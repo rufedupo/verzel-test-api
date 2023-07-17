@@ -5,6 +5,8 @@ using verzel_test_api.domain.Models;
 using verzel_test_api.domain.Responses;
 using verzel_test_api.domain.ViewModels;
 using System.Net;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace verzel_test_api.business.Services
 {
@@ -37,7 +39,7 @@ namespace verzel_test_api.business.Services
                 Color = car.Color,
                 Age = car.Age,
                 Km = car.Km,
-                Price = car.Price,
+                Price = car.Price.ToString("C").Replace("R$ ", ""),
                 Photo = car.Photo,
                 UserId = userId,
                 CreatedAt = car.CreatedAt
@@ -66,7 +68,7 @@ namespace verzel_test_api.business.Services
                     Color = car.Color,
                     Age = car.Age,
                     Km = car.Km,
-                    Price = car.Price,
+                    Price = car.Price.ToString("C").Replace("R$ ", ""),
                     Photo = car.Photo,
                     UserId = car.UserId,
                     CreatedAt = car.CreatedAt
@@ -101,7 +103,7 @@ namespace verzel_test_api.business.Services
                     Color = car.Color,
                     Age = car.Age,
                     Km = car.Km,
-                    Price = car.Price,
+                    Price = car.Price.ToString("C").Replace("R$ ", ""),
                     Photo = car.Photo,
                     UserId = car.UserId,
                     CreatedAt = car.CreatedAt
@@ -127,7 +129,7 @@ namespace verzel_test_api.business.Services
                 Age = addCarViewModel.Age,
                 Km = addCarViewModel.Km,
                 Price = addCarViewModel.Price,
-                //Photo = addCarViewModel.Photo,
+                Photo = addCarViewModel.Photo,
                 CreatedAt = DateTime.UtcNow,
                 UserId = userId
             };
@@ -142,7 +144,7 @@ namespace verzel_test_api.business.Services
                 Color = car.Color,
                 Age = car.Age,
                 Km = car.Km,
-                Price = car.Price,
+                Price = car.Price.ToString("C").Replace("R$ ", ""),
                 Photo = car.Photo,
                 UserId = car.UserId,
                 CreatedAt = car.CreatedAt
@@ -165,6 +167,7 @@ namespace verzel_test_api.business.Services
             car.Age = editCarViewModel.Age;
             car.Km = editCarViewModel.Km;
             car.Price = editCarViewModel.Price;
+            car.Photo = editCarViewModel.Photo;
             car.UpdatedAt = DateTime.UtcNow;
 
             var carUpdated = await _carRepository.Update(car);
@@ -177,7 +180,7 @@ namespace verzel_test_api.business.Services
                 Color = carUpdated.Color,
                 Age = carUpdated.Age,
                 Km = carUpdated.Km,
-                Price = carUpdated.Price,
+                Price = carUpdated.Price.ToString("C").Replace("R$ ", ""),
                 Photo = carUpdated.Photo,
                 UserId = carUpdated.UserId,
                 CreatedAt = carUpdated.CreatedAt,

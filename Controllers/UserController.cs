@@ -47,6 +47,10 @@ namespace verzel_test_api.Controllers
         {
             try
             {
+                if (newPassword.Length < 6)
+                {
+                    return BadRequest("Senha precisa ser maior que 6 caracteres.");
+                }
                 Guid userId = Guid.Parse(HttpContext.User.Identity.Name);
                 var res = await _userService.SetPassword(userId, newPassword);
                 return Ok(res);

@@ -26,6 +26,6 @@ namespace verzel_test_api.domain.ViewModels
         [Required]
         public decimal Price { get; set; }
 
-        public IFormFile? Photo { get; set; }
+        public string? Photo { get; set; }
     }
 }

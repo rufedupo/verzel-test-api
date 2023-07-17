@@ -18,9 +18,9 @@ namespace verzel_test_api.domain.Responses
 
         public int Km { get; set; }
 
-        public decimal Price { get; set; }
+        public string Price { get; set; }
 
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
 
         public Guid UserId { get; set; }
 

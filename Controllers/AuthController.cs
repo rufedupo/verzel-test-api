@@ -56,9 +56,19 @@ namespace verzel_test_api.Controllers
                     return BadRequest("Dados em branco");
                 }
 
+                if (!Regex.IsMatch(registerViewModel.Name, @"^(?!.*  )[A-Za-z ]+$"))
+                {
+                    return BadRequest("Nome inválido.");
+                }
+
                 if (!Regex.IsMatch(registerViewModel.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
                 {
                     return BadRequest("Email inválido");
+                }
+
+                if (registerViewModel.Password.Length < 6)
+                {
+                    return BadRequest("Senha precisa ser maior que 6 caracteres.");
                 }
 
                 var res = await _authService.Register(registerViewModel);
