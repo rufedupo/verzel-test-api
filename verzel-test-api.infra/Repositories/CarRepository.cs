@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using verzel_test_api.domain.Interfaces.Repositories;
+﻿using verzel_test_api.domain.Interfaces.Repositories;
 using verzel_test_api.domain.Models;
 using verzel_test_api.infra.Contexts;
 
